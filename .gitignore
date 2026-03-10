@@ -1,7 +1,13 @@
-# Environment variables — NEVER commit these
+# Environment variables
 .env
 .env.local
 .env.*.local
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
 
 # Python
 __pycache__/
@@ -9,22 +15,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pdb
-*.egg
-*.egg-info/
-dist/
-build/
-*.spec
-venv/
 .venv/
+venv/
 env/
 ENV/
-
-# Node / Next.js
-adradar/dashboard/node_modules/
-adradar/dashboard/.next/
-adradar/dashboard/out/
-adradar/dashboard/.env.local
+*.egg-info/
+dist/
 
 # Logs
 *.log
@@ -44,3 +40,5 @@ desktop.ini
 
 # Test artifacts
 /tmp/
+adradar_dashboard_initial_load_*.png
+website_running_check_*.webp
