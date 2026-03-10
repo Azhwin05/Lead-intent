@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd adradar/dashboard && npm install && npm run build",
+  "outputDirectory": "adradar/dashboard/.next",
+  "installCommand": "cd adradar/dashboard && npm install",
+  "devCommand": "cd adradar/dashboard && npm run dev",
+  "framework": "nextjs",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}

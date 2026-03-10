@@ -68,3 +68,28 @@ export async function fetchHealthStatus(): Promise<HealthStatus> {
     return { status: "offline", airtable: "disconnected", timestamp: new Date().toISOString() };
   }
 }
+
+export interface PipelineRun {
+  date: string;
+  scraped: string | number;
+  filtered: string | number;
+  enriched: string | number;
+  hot: string | number;
+  warm: string | number;
+  cold: string | number;
+  pushed: string | number;
+  duration: string;
+  current?: boolean;
+}
+
+export async function fetchPipelineHistory(): Promise<PipelineRun[]> {
+  try {
+    const res = await fetch(`${API_BASE}/pipeline/history`);
+    if (!res.ok) throw new Error("Failed to fetch history");
+    const data = await res.json();
+    return data.history || [];
+  } catch (error) {
+    console.error("Error fetching pipeline history:", error);
+    return [];
+  }
+}

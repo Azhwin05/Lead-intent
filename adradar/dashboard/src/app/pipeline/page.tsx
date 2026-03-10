@@ -6,9 +6,8 @@ import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell } from "rechar
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { triggerPipelineRun } from "@/lib/api";
+import { triggerPipelineRun, fetchPipelineHistory, PipelineRun } from "@/lib/api";
 
 const DAILY_LEADS = [
   { day: "24 Feb", hot: 5, warm: 10, cold: 15 },
@@ -53,14 +52,13 @@ const PIPELINE_STEPS = [
 ];
 
 export default function PipelinePage() {
-  const [history, setHistory] = useState<any[]>([]);
+  const [history, setHistory] = useState<PipelineRun[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/pipeline/history")
-      .then(res => res.json())
+    fetchPipelineHistory()
       .then(data => {
-        setHistory(data.history || []);
+        setHistory(data);
         setLoading(false);
       })
       .catch(err => {
