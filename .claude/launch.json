@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Pipeline (dry-run)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["main.py", "--dry-run"],
+      "port": 8000
+    },
+    {
+      "name": "Pipeline (dry-run, 5 leads)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["main.py", "--dry-run", "--limit", "5"],
+      "port": 8001
+    },
+    {
+      "name": "Scheduler (daily daemon)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["scheduler.py"],
+      "port": 8002
+    },
+    {
+      "name": "Scheduler (run-now)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["scheduler.py", "--run-now", "--dry-run"],
+      "port": 8003
+    }
+  ]
+}
